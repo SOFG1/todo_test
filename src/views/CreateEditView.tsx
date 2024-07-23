@@ -14,7 +14,7 @@ interface IProps {
   editData?: ITodo;
 }
 
-export const CreateEditComponent = ({
+export const CreateEditView = ({
   onCreate,
   onUpdate,
   onClose,

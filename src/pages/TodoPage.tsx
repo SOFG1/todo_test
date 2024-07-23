@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { CreateEditComponent } from "../components/CreateEditComponent";
 import { ITodo, todosApi } from "../api/todosApi";
 import { handleRequest } from "../api";
 import { TodoComponent } from "../components/TodoComponent";
 import { Button } from "../UI/Button";
+import { CreateEditView } from "../views/CreateEditView";
 
 export const TodoPage = () => {
   const [todos, setTodos] = useState<ITodo[]>([]);
@@ -42,7 +42,7 @@ export const TodoPage = () => {
       <h1 className="text-3xl font-bold text-center mb-10">Todos:</h1>
       <Button onClick={() => setShowModal(true)}>Create todo</Button>
       {showModal && (
-        <CreateEditComponent
+        <CreateEditView
           onCreate={addTodo}
           onClose={() => setShowModal(false)}
         />

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ITodo, todosApi } from "../api/todosApi";
 import { Button } from "../UI/Button";
 import { handleRequest } from "../api";
-import { CreateEditComponent } from "./CreateEditComponent";
+import { CreateEditView } from "../views/CreateEditView";
 
 interface IProps {
   todo: ITodo;
@@ -26,7 +26,7 @@ export const TodoComponent = ({ todo, onDelete, onUpdate }: IProps) => {
   return (
     <>
       {showModal && (
-        <CreateEditComponent
+        <CreateEditView
           onUpdate={onUpdate}
           editData={todo}
           onClose={() => setShowModal(false)}
