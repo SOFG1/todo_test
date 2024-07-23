@@ -23,6 +23,10 @@ export const TodoPage = () => {
     setTodos(p => ([...p, todo]))
   }
 
+  const deleteTodo = (todo: ITodo) => {
+    setTodos(p => p.filter(t => t !== todo))
+  }
+
   useEffect(() => {
     getTodos();
   }, []);
@@ -32,7 +36,7 @@ export const TodoPage = () => {
       <h1 className="text-3xl font-bold text-center mb-10">Todos</h1>
       <CreateEditComponent onCreate={addTodo} />
       <div className="py-3">
-        {todos.map((t, i) => <TodoComponent todo={t} key={`${t.id} ${i}`} />)}
+        {todos.map((t, i) => <TodoComponent todo={t} onDelete={deleteTodo} key={`${t.id}${i}`} />)}
       </div>
     </div>
   );
