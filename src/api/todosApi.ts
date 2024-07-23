@@ -7,10 +7,9 @@ export interface ITodo {
   title: string;
   description: string;
   date: string;
-  userId: number;
 }
 
-export type ICreateTodo = Omit<ITodo, "id" | "userId">;
+export type ICreateTodo = Omit<ITodo, "id">;
 
 export const todosApi = {
   getTodos: async () => {
@@ -20,22 +19,16 @@ export const todosApi = {
       },
     });
   },
-  createItem: async ({ title, description, date }: ICreateTodo) => {
+  createItem: async (data: ICreateTodo) => {
     return await axiosInstance.post(`/todos`, {
-      title,
-      description,
-      date,
+      ...data,
       userId,
     });
   },
   deleteItem: async (id: number) => {
     return await axiosInstance.delete(`/todos/${id}`);
   },
-  editItem: async (token: string, id: string, data: any) => {
-    return await axiosInstance.post(`/userdocs/set/${id}`, data, {
-      headers: {
-        "x-auth": token,
-      },
-    });
+  editItem: async (data: ITodo) => {
+    return await axiosInstance.patch(`/todos/${data.id}`, {userId, ...data});
   },
 };
