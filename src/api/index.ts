@@ -2,7 +2,6 @@ import axios, { AxiosResponse } from "axios";
 
 const API_URL = "https://jsonplaceholder.typicode.com";
 
-
 export const axiosInstance = axios.create({
   baseURL: API_URL,
 });
@@ -20,6 +19,9 @@ export const handleRequest = (promise: Promise<AxiosResponse<any>>) => {
       };
     })
     .catch((error) => {
-      return Promise.resolve({ error: error.message || "Error occured", data: undefined });
+      return Promise.resolve({
+        error: error.message || "Error occured",
+        data: undefined,
+      });
     });
 };

@@ -27,13 +27,11 @@ export const TodoPage = () => {
     setTodos((p) => p.filter((t) => t !== todo));
   };
 
-
   const updateTodo = (todo: ITodo, index: number) => {
-    const copy = [...todos]
-    copy.splice(index, 1, todo)
-    setTodos(copy)
-  }
-
+    const copy = [...todos];
+    copy.splice(index, 1, todo);
+    setTodos(copy);
+  };
 
   useEffect(() => {
     getTodos();
@@ -51,7 +49,12 @@ export const TodoPage = () => {
       )}
       <div className="py-3">
         {todos.map((t, i) => (
-          <TodoComponent todo={t} onUpdate={(t) => updateTodo(t, i)} onDelete={deleteTodo} key={`${t.id}${i}`} />
+          <TodoComponent
+            todo={t}
+            onUpdate={(t) => updateTodo(t, i)}
+            onDelete={deleteTodo}
+            key={`${t.id}${i}`}
+          />
         ))}
       </div>
     </div>

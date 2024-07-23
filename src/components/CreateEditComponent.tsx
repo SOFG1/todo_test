@@ -47,11 +47,16 @@ export const CreateEditComponent = ({
   const handleEdit = async () => {
     setIsFetching(true);
     const { data, error } = await handleRequest(
-      todosApi.editItem({id: (editData as ITodo).id, title, description, date })
+      todosApi.editItem({
+        id: (editData as ITodo).id,
+        title,
+        description,
+        date,
+      })
     );
     setIsFetching(false);
     if (data) {
-    (onUpdate as Function)(data)
+      (onUpdate as Function)(data);
       onClose();
       setTitle("");
       setDescription("");

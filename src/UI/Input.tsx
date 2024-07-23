@@ -3,7 +3,7 @@ interface IProps {
   value: string;
   onChange: (e: string) => void;
   disabled?: boolean;
-  className?: string
+  className?: string;
 }
 
 export const TextInput = ({
@@ -11,7 +11,7 @@ export const TextInput = ({
   onChange,
   placeholder,
   disabled,
-  className
+  className,
 }: IProps) => {
   return (
     <input

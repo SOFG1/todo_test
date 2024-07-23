@@ -7,7 +7,7 @@ import { CreateEditComponent } from "./CreateEditComponent";
 interface IProps {
   todo: ITodo;
   onDelete: (todo: ITodo) => void;
-  onUpdate:(todo: ITodo) => void
+  onUpdate: (todo: ITodo) => void;
 }
 
 export const TodoComponent = ({ todo, onDelete, onUpdate }: IProps) => {
@@ -25,7 +25,13 @@ export const TodoComponent = ({ todo, onDelete, onUpdate }: IProps) => {
 
   return (
     <>
-      {showModal && <CreateEditComponent onUpdate={onUpdate} editData={todo} onClose={() => setShowModal(false)} />}
+      {showModal && (
+        <CreateEditComponent
+          onUpdate={onUpdate}
+          editData={todo}
+          onClose={() => setShowModal(false)}
+        />
+      )}
       <div className="bg-slate-300 mb-4 flex gap-5 items-center p-2 rounded">
         <p className="min-w-44">{todo.title}</p>
         <p>{todo.description}</p>

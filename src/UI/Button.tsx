@@ -2,7 +2,7 @@ interface IProps {
   children: string;
   onClick: () => void;
   disabled?: boolean;
-  className?: string
+  className?: string;
 }
 
 export const Button = ({ children, onClick, disabled, className }: IProps) => {

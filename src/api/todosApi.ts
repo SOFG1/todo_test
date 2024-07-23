@@ -29,6 +29,6 @@ export const todosApi = {
     return await axiosInstance.delete(`/todos/${id}`);
   },
   editItem: async (data: ITodo) => {
-    return await axiosInstance.patch(`/todos/${data.id}`, {userId, ...data});
+    return await axiosInstance.patch(`/todos/${data.id}`, { userId, ...data });
   },
 };
