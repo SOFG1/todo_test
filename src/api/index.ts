@@ -20,6 +20,6 @@ export const handleRequest = (promise: Promise<AxiosResponse<any>>) => {
       };
     })
     .catch((error) => {
-      return Promise.resolve({ error: error.response.data, data: undefined });
+      return Promise.resolve({ error: error.message || "Error occured", data: undefined });
     });
 };

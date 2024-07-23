@@ -18,11 +18,15 @@ export const CreateEditComponent = ({onCreate}: IProps) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [date, setDate] = useState<string>(formatDate(new Date()));
+  const [error, setError] = useState<string | null>(null)
+  const [isFetching, setIsFetching] = useState<boolean>(false)
 
 
 
   const handleCreate = async () => {
+    setIsFetching(true)
     const {data, error} = await handleRequest(todosApi.createItem({title, description, date}))
+    setIsFetching(false)
     if(data) {
       onCreate(data)
       setOpened(false)
@@ -31,7 +35,7 @@ export const CreateEditComponent = ({onCreate}: IProps) => {
       setDate(formatDate(new Date()))
     }
     if(error) {
-      console.log(error)
+      setError(error)
     }
   }
 
@@ -48,7 +52,8 @@ export const CreateEditComponent = ({onCreate}: IProps) => {
               onChange={setDescription}
             />
             <DateInput value={date} onChange={setDate} />
-            <Button onClick={handleCreate}>Create todo</Button>
+            <Button onClick={handleCreate} disabled={isFetching || !title || !description}>Create todo</Button>
+            {error && <p className="text-red-600 text-center">{error}</p>}
           </div>
         </Modal>
       )}

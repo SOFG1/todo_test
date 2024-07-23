@@ -5,13 +5,7 @@ import { handleRequest } from "../api";
 import { TodoComponent } from "../components/TodoComponent";
 
 export const TodoPage = () => {
-  const [todos, setTodos] = useState<ITodo[]>([{
-    "title": "test",
-    "description": "test",
-    "date": "2024-07-23",
-    "userId": 194,
-    "id": 201
-}]);
+  const [todos, setTodos] = useState<ITodo[]>([]);
 
   console.log(todos)
 
